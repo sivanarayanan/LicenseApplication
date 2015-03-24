@@ -1,0 +1,43 @@
+﻿@model LicenseApplication.Models.User
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "");
+    <div>
+        <fieldset>
+            <legend style="text-align:center">Login Form</legend>
+            <table>
+                <tr>
+                    <td style="text-align:right">@Html.LabelFor(u => u.EmailID)</td>
+                    <td style="text-align:justify">@Html.TextBoxFor(u => u.EmailID)</td>
+                    <td style="text-align:justify">@Html.ValidationMessageFor(u => u.EmailID)</td>
+                </tr>
+                <tr>
+                    <td style="text-align:right">@Html.LabelFor(u => u.Password)</td>
+                    <td style="text-align:justify">@Html.PasswordFor(u => u.Password)</td>
+                    <td style="text-align:justify">@Html.ValidationMessageFor(u => u.Password)</td>
+                </tr>
+                <tr>
+                    <td colspan="3">
+                        <table style="width:100%">
+                            <tr>
+                                <td style="text-align: right">
+                                    <p>@Html.ActionLink("Register", "Register", "User") if You don't have an Account</p>
+                                </td>
+                                <td style="text-align: right">
+                                    <input type="submit" value="Login" />
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+}

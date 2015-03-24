@@ -1,0 +1,47 @@
+﻿@model LicenseApplication.Models.User
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Profile</h2>
+<div>
+    <fieldset>
+        <legend>User</legend>
+
+        <table>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.EmailID)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.EmailID)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.First_Name)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.First_Name)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Last_Name)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Last_Name)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Display_Name)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Display_Name)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Joined_Date)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Joined_Date)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Last_Login)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Last_Login)</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    @Html.ActionLink("Edit", "Edit/" + Session["UserId"]) |
+                @Html.ActionLink("Delete", "Delete/" + Session["UserId"]) |
+                @Html.ActionLink("Back To Home", "Index", "License")
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+</div>

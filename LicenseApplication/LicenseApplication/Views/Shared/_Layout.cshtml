@@ -1,0 +1,56 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="~/eg-logo.png" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    
+</head>
+<body>
+    <header>
+        <div class="content-wrapper">
+            <table style="width: 100%;">
+                <tr>
+                    <td style="text-align: left; vertical-align: central">
+                        <img src="~/EG-Logo Full.png" />
+                    </td>
+                    <td style="text-align: center; vertical-align: central">
+                        <p class="site-title">License Application</p>
+                    </td>
+                    <td style="text-align: right; vertical-align: bottom">
+                        <section id="login">
+                            @if (Request.IsAuthenticated)
+                            {
+                                <ul>
+                                    <li>Hello, @Session["UserName"]</li>
+                                    <li>@Html.ActionLink("View Profile","Details/" + Session["UserId"],"User")</li>
+                                    <li>@Html.ActionLink("Logout", "Logout", "User")</li>
+                                </ul>
+                            }
+                        </section>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </header>
+    <div id="body">
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer style="height: 30px">
+        <div class="content-wrapper">
+            <div class="float-left" style="width: 100%;">
+                <p style="text-align: center">&copy; @DateTime.Now.Year 5G Automatika Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

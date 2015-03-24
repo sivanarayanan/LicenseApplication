@@ -1,0 +1,48 @@
+﻿@model LicenseApplication.Models.User
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+@using (Html.BeginForm())
+{
+    <h3>Are you sure you want to delete this?</h3>
+    <fieldset>
+        <legend>User</legend>
+
+        <table>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.EmailID)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.EmailID)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.First_Name)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.First_Name)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Last_Name)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Last_Name)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Display_Name)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Display_Name)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Joined_Date)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Joined_Date)</td>
+            </tr>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.Last_Login)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.Last_Login)</td>
+            </tr>
+            <tr>
+                <td style="text-align: left;">@Html.ActionLink("Back to Details", "Details/"+Session["UserId"])</td>
+                <td style="text-align: right;">
+                    <input type="submit" value="Delete" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}

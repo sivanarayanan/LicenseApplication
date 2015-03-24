@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LicenseModel_InactiveLicenseStoreContainer" CdmEntityContainer="LicenseEntities_InactiveLicense">
+    <EntitySetMapping Name="Inactive_Licenses">
+      <EntityTypeMapping TypeName="LicenseModel_InactiveLicense.Inactive_Licenses">
+        <MappingFragment StoreEntitySet="Inactive_Licenses">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="License_keys" ColumnName="License_keys" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

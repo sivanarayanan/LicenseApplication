@@ -1,0 +1,68 @@
+﻿@model IEnumerable<LicenseApplication.Models.Inactive_Licenses>
+@{
+    
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var grid = new WebGrid(Model, canPage: true, rowsPerPage: 5,defaultSort:"Id",
+    selectionFieldName: "selectedRow", ajaxUpdateContainerId: "gridContent");
+    grid.Pager(WebGridPagerModes.NextPrevious);
+ }
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true, "");
+    <head>
+        <title>
+            @ViewBag.Title = "License List";
+
+        </title>
+        <style>
+            .webGrid { margin: 4px; border-collapse: collapse; width: 500px;  background-color:#B4CFC3;}
+            .header { background-color: #C1D4E6; font-weight: bold; color: #FFF; }
+            .webGrid th, .webGrid td { border: 1px solid #C0C0C0; padding: 5px; }
+            .alt { background-color: #E4E9F5; color: #000; }
+            .gridHead a:hover {text-decoration:underline;}
+            .description { width:auto}
+            .select{background-color: #71857C}
+        </style>
+        </head>
+    <div>
+        <fieldset>
+            <legend>Request For License</legend>
+            <table>
+                <tr>
+                    <td>Product Name : </td>
+                    <td>Enterprise Gateway</td>
+                </tr>
+                <tr>
+                    <td>Version : </td>
+                    <td>2.8.2</td>
+                </tr>
+                <tr>
+                    <td>Number of Keys</td>
+                    <td>
+                        @using (Html.BeginForm("GenerateKey", "License"))
+                        {
+                            @Html.TextBox("value")
+                            <input type="submit" value="Generate" />
+                        }
+                    </td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <td>
+                             @grid.GetHtml(tableStyle: "webGrid",
+                             headerStyle: "header",
+                             alternatingRowStyle: "alt",
+                             selectedRowStyle: "select",
+                             columns: grid.Columns(
+                             grid.Column("Id", "S.No"),
+                             grid.Column("License_keys", "License Keys")
+                             ))    
+                    </td>
+                </tr>
+            </table>
+        </fieldset>
+    </div>
+}

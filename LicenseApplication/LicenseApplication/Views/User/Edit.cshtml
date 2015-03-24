@@ -1,0 +1,59 @@
+﻿@model LicenseApplication.Models.User
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>User</legend>
+
+        @Html.HiddenFor(model => model.Id)
+        @Html.HiddenFor(model => model.EmailID)
+        @Html.HiddenFor(model => model.Password)
+        @Html.HiddenFor(model => model.Joined_Date)
+        @Html.HiddenFor(model => model.Last_Login)
+
+        <table>
+            <tr>
+                <td style="text-align: right;">@Html.DisplayNameFor(model => model.EmailID)</td>
+                <td style="text-align: justify;">@Html.DisplayFor(model => model.EmailID)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.First_Name)</td>
+                <td>@Html.EditorFor(model => model.First_Name)</td>
+                <td>@Html.ValidationMessageFor(model => model.First_Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Last_Name)</td>
+                <td>@Html.EditorFor(model => model.Last_Name)</td>
+                <td>@Html.ValidationMessageFor(model => model.Last_Name)</td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(model => model.Display_Name)</td>
+                <td>@Html.EditorFor(model => model.Display_Name)</td>
+                <td>@Html.ValidationMessageFor(model => model.Display_Name)</td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    @Html.ActionLink("Change Password", "Change_Password/" + Session["UserId"]) |                     
+                @Html.ActionLink("Delete", "Delete/" + Session["UserId"]) |
+                @Html.ActionLink("Back To Details", "Details/" + Session["UserId"])
+                </td>
+                <td>
+                    <input type="submit" value="Save" />
+                </td>
+            </tr>
+        </table>
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
